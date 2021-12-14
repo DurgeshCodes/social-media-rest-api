@@ -9,9 +9,13 @@ const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 
 dotenv.config();
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true }, () => {
-  console.log("connected to mongo");
-});
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Database connected!"))
+  .catch((err) => console.log(err));
 
 // middleware
 app.use(express.json());
