@@ -15,7 +15,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("Database connected!"))
+  .then(() => console.log("\x1b[36m%s\x1b[0m", "Database connected!"))
   .catch((err) => console.log(err));
 
 // middleware
@@ -27,5 +27,5 @@ app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 app.listen("8080", () => {
-  console.log("backend server running");
+  console.log("\x1b[36m%s\x1b[0m", "backend server running");
 });
