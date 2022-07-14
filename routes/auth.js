@@ -16,7 +16,8 @@ router.post("/register", async (req, res) => {
 
     // add user to db
     const user = await newUser.save();
-    res.status(200).json(user);
+    const { password, ...other } = user._doc;
+    res.status(200).json(other);
     console.log("sent!!!!!!");
   } catch (error) {
     console.log("\nERR :\n", error);
@@ -34,7 +35,8 @@ router.post("/login", async (req, res) => {
       user.password
     );
     !validPassword && res.status(400).json("invalid password");
-    res.status(200).json(user);
+    const { password, ...other } = user._doc;
+    res.status(200).json(other);
   } catch (error) {}
 });
 
